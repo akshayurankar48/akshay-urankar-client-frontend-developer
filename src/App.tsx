@@ -4,6 +4,7 @@ import Navbar from './components/navbar/Navbar';
 import Slider from './components/slider/Slider';
 import { AppContext } from './store/AppContext';
 import Auth from './components/auth/Auth';
+import Cards from './components/cards/Cards';
 
 function App() {
   const { isLoggedIn } = useContext(AppContext);
@@ -15,10 +16,8 @@ function App() {
       {/* Image Slider */}
       <Slider />
 
-      {/* Auth Component */}
-      <Auth />
-
       {/* Display Cards */}
+      {isLoggedIn ? <Cards /> : <Auth />}
 
       {/* Footer */}
       <Footer />
