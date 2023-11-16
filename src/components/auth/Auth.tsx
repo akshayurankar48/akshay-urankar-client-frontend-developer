@@ -52,7 +52,7 @@ const Auth = () => {
             {/* Dialog Title displaying Spacex Logo and Sign In/Sign Up */}
             <DialogTitle className="capitalize mb-5 flex items-center justify-between max-w-sm">
               <img
-                src="/assets/spacex.svg"
+                src="/assets/icons/spacex.svg"
                 alt="Spacex Logo"
                 className="w-28"
               />
