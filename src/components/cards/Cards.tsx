@@ -67,7 +67,7 @@ const Cards = () => {
   // Loading state
   if (loading && !error)
     return (
-      <div className="flex items-center justify-center flex-wrap gap-6 w-full my-10">
+      <div className="flex items-center justify-center flex-wrap gap-10 w-full my-10">
         {[1, 2, 3, 4, 5, 6, 7, 8].map((_, index) => (
           <CardLoader key={index} />
         ))}
