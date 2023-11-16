@@ -1,4 +1,5 @@
 import Navbar from './components/navbar/Navbar';
+import Slider from './components/slider/Slider';
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <Navbar />
 
       {/* Image Slider */}
+      <Slider />
 
       {/* Search Component */}
 
