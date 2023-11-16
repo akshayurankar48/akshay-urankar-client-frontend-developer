@@ -1,3 +1,6 @@
+// Import MobileNav component for mobile navigation
+import MobileNav from './MobileNav';
+
 // Navbar component represents the website navigation bar
 const Navbar = () => {
   return (
@@ -13,6 +16,7 @@ const Navbar = () => {
       </a>
 
       {/* MobileNav component for mobile navigation */}
+      <MobileNav />
     </nav>
   );
 };
