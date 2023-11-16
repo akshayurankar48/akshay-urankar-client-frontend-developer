@@ -1,6 +1,7 @@
 // Import necessary types and components
 import { Capsule } from '@/types';
 import { Dialog, DialogTrigger } from '@/components/ui/dialog';
+import DetailsDialog from '../dialog/DetailsDialog';
 import { formatDate } from '@/lib/utils';
 
 // Define the CardProps interface for the Card component
@@ -32,6 +33,8 @@ const Card = ({ capsule }: CardProps) => {
           </p>
         </div>
       </DialogTrigger>
+      {/* DetailsDialog component to show additional details when triggered */}
+      <DetailsDialog capsule={capsule} />
     </Dialog>
   );
 };
