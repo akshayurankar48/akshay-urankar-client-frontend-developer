@@ -28,8 +28,6 @@ const useAuth = (): AuthHook => {
   const [error, setError] = useState<string>('');
   const [loading, setLoading] = useState(false);
 
-  const BACKEND_URL = process.env.BACKEND_URL;
-
   // Handle user sign-in
   const handleSignIn = async (): Promise<void> => {
     if (!email || !password) {
@@ -39,7 +37,7 @@ const useAuth = (): AuthHook => {
 
     try {
       setLoading(true);
-      const response = await axios.post(`${BACKEND_URL}/auth/login`, {
+      const response = await axios.post('http://localhost:8000/auth/login', {
         email,
         password,
       });
@@ -69,7 +67,7 @@ const useAuth = (): AuthHook => {
 
     try {
       setLoading(true);
-      const response = await axios.post(`${BACKEND_URL}/auth/register`, {
+      const response = await axios.post('http://localhost:8000/auth/register', {
         email,
         username,
         password,
