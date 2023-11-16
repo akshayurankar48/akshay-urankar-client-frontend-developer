@@ -67,7 +67,7 @@ const Cards = () => {
   // Loading state
   if (loading && !error)
     return (
-      <div className="flex items-center justify-center flex-wrap gap-10 w-full my-10">
+      <div className="flex items-center justify-center flex-wrap gap-6 w-full my-10">
         {[1, 2, 3, 4, 5, 6, 7, 8].map((_, index) => (
           <CardLoader key={index} />
         ))}
@@ -101,7 +101,7 @@ const Cards = () => {
   // Display the filtered capsules
   return (
     <>
-      <main className="flex items-center flex-wrap gap-6 w-full m-10">
+      <main className="flex items-center flex-wrap gap-12 w-full m-10">
         {currentCapsules?.map((capsule: Capsule, index: number) => (
           <Card key={index} capsule={capsule} />
         ))}
