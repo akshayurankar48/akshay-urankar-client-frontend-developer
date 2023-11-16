@@ -1,3 +1,4 @@
+import Footer from './components/footer/Footer';
 import Navbar from './components/navbar/Navbar';
 import Slider from './components/slider/Slider';
 
@@ -15,6 +16,7 @@ function App() {
       {/* Display Cards */}
 
       {/* Footer */}
+      <Footer />
     </div>
   );
 }
