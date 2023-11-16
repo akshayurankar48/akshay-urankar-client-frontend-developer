@@ -2,7 +2,23 @@ import { AppContext } from '@/store/AppContext';
 import axios from 'axios';
 import { useContext, useState } from 'react';
 
-const useAuth = () => {
+// Define the shape of the useAuth hook return value
+interface AuthHook {
+  handleSignIn: () => Promise<void>;
+  handleSignUp: () => Promise<void>;
+  setShowRegister: React.Dispatch<React.SetStateAction<boolean>>;
+  setUsername: React.Dispatch<React.SetStateAction<string>>;
+  setEmail: React.Dispatch<React.SetStateAction<string>>;
+  setPassword: React.Dispatch<React.SetStateAction<string>>;
+  showRegister: boolean;
+  username: string;
+  email: string;
+  password: string;
+  loading: boolean;
+  error: string;
+}
+
+const useAuth = (): AuthHook => {
   const { setIsLoggedIn } = useContext(AppContext);
   const [showRegister, setShowRegister] = useState<boolean>(false);
   const [username, setUsername] = useState<string>('');
@@ -13,9 +29,11 @@ const useAuth = () => {
 
   const BACKEND_URL = process.env.BACKEND_URL;
 
-  const handleSignIn = async () => {
+  // Handle user sign-in
+  const handleSignIn = async (): Promise<void> => {
     if (!email || !password) {
       setError('Please fill all the fields');
+      return;
     }
 
     try {
@@ -41,9 +59,11 @@ const useAuth = () => {
     }
   };
 
-  const handleSignUp = async () => {
+  // Handle user sign-up
+  const handleSignUp = async (): Promise<void> => {
     if (!username || !password || !email) {
       setError('Please fill all the fields');
+      return;
     }
 
     try {
@@ -65,6 +85,7 @@ const useAuth = () => {
     }
   };
 
+  // Return the functions and state variables
   return {
     handleSignUp,
     handleSignIn,
