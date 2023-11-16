@@ -2,7 +2,13 @@
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        dark: '#000',
+        light: '#fff',
+      },
+    },
   },
-  plugins: [],
+  // eslint-disable-next-line no-undef
+  plugins: [require('tailwindcss-animate'), require('tailwind-scrollbar-hide')],
 };
