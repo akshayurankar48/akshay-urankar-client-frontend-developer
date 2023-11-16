@@ -101,7 +101,7 @@ const Cards = () => {
   // Display the filtered capsules
   return (
     <>
-      <main className="flex items-center flex-wrap gap-6 w-full m-10">
+      <main className="flex items-center flex-wrap gap-10 w-full m-10">
         {currentCapsules?.map((capsule: Capsule, index: number) => (
           <Card key={index} capsule={capsule} />
         ))}
