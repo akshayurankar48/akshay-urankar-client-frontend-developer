@@ -10,6 +10,7 @@ interface AuthHook {
   setUsername: React.Dispatch<React.SetStateAction<string>>;
   setEmail: React.Dispatch<React.SetStateAction<string>>;
   setPassword: React.Dispatch<React.SetStateAction<string>>;
+  setError: React.Dispatch<React.SetStateAction<string>>;
   showRegister: boolean;
   username: string;
   email: string;
@@ -93,6 +94,7 @@ const useAuth = (): AuthHook => {
     setUsername,
     setEmail,
     setPassword,
+    setError,
     showRegister,
     username,
     email,
