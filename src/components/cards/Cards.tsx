@@ -1,24 +1,68 @@
-import { useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import Pagination from '../pagination/Pagination';
 import CardLoader from './CardLoader';
 import Card from './Card';
 import { Capsule } from '@/types';
 import useFetch from '@/hooks/useFetch';
+import { AppContext } from '@/store/AppContext';
+import { formatDate } from '@/lib/utils';
 
 const Cards = () => {
   // Fetch capsule data using custom hook
   const { capsules, loading, error } = useFetch();
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const { searchTerm, searchBy } = useContext(AppContext);
+  const [filteredCapsules, setFilteredCapsules] = useState<Capsule[]>([]);
 
   const postsPerPage = 8;
 
   // Calculate the index of the last and first post for pagination
   const lastPostIndex: number = currentPage * postsPerPage;
   const firstPostIndex: number = lastPostIndex - postsPerPage;
-  const currentCapsules: Capsule[] = capsules.slice(
+  const currentCapsules: Capsule[] = filteredCapsules.slice(
     firstPostIndex,
     lastPostIndex
   );
+
+  // Function to filter capsules based on search term and criteria
+  const filterResults = useCallback(() => {
+    if (!searchTerm) {
+      // If no search term, show all capsules
+      setFilteredCapsules(capsules);
+      return;
+    }
+
+    // Filter capsules based on searchBy field and search term
+    const filtered = capsules?.filter((capsule: Capsule) => {
+      if (
+        searchBy === 'status' &&
+        capsule.status?.toLowerCase().includes(searchTerm?.toLowerCase())
+      ) {
+        return true;
+      } else if (
+        searchBy === 'original_launch' &&
+        formatDate(capsule.original_launch)
+          ?.toLowerCase()
+          .includes(searchTerm?.toLowerCase())
+      ) {
+        return true;
+      } else if (
+        searchBy === 'type' &&
+        capsule.type?.toLowerCase().includes(searchTerm?.toLowerCase())
+      ) {
+        return true;
+      }
+
+      return false;
+    });
+
+    setFilteredCapsules(filtered);
+  }, [searchTerm, searchBy, capsules]);
+
+  // Use effect to trigger the filter when search criteria changes
+  useEffect(() => {
+    filterResults();
+  }, [filterResults]);
 
   // Loading state
   if (loading && !error)
@@ -66,7 +110,7 @@ const Cards = () => {
         currentPage={currentPage}
         postsPerPage={postsPerPage}
         setCurrentPage={setCurrentPage}
-        totalPosts={capsules.length}
+        totalPosts={filteredCapsules.length}
       />
     </>
   );
