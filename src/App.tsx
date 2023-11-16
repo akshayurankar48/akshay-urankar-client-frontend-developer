@@ -2,9 +2,10 @@ import { useContext } from 'react';
 import Footer from './components/footer/Footer';
 import Navbar from './components/navbar/Navbar';
 import Slider from './components/slider/Slider';
-import { AppContext } from './store/AppContext';
 import Auth from './components/auth/Auth';
 import Cards from './components/cards/Cards';
+import Search from './components/search/Search';
+import { AppContext } from './store/AppContext';
 
 function App() {
   const { isLoggedIn } = useContext(AppContext);
@@ -16,8 +17,15 @@ function App() {
       {/* Image Slider */}
       <Slider />
 
-      {/* Display Cards */}
-      {isLoggedIn ? <Cards /> : <Auth />}
+      {/* Display Search &  Cards */}
+      {isLoggedIn ? (
+        <>
+          <Search />
+          <Cards />
+        </>
+      ) : (
+        <Auth />
+      )}
 
       {/* Footer */}
       <Footer />
