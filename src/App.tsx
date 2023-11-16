@@ -3,6 +3,7 @@ import Footer from './components/footer/Footer';
 import Navbar from './components/navbar/Navbar';
 import Slider from './components/slider/Slider';
 import { AppContext } from './store/AppContext';
+import Auth from './components/auth/Auth';
 
 function App() {
   const { isLoggedIn } = useContext(AppContext);
@@ -14,7 +15,8 @@ function App() {
       {/* Image Slider */}
       <Slider />
 
-      {/* Search Component */}
+      {/* Auth Component */}
+      <Auth />
 
       {/* Display Cards */}
 
