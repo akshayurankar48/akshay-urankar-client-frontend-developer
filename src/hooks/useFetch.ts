@@ -16,8 +16,6 @@ const useFetch = (): UseCapsulesResult => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  const BACKEND_URL = process.env.BACKEND_URL;
-
   // Function to fetch capsules from the SpaceX API
   const fetchCapsules = async (): Promise<void> => {
     try {
@@ -28,7 +26,7 @@ const useFetch = (): UseCapsulesResult => {
       const sessionToken: string | null = localStorage.getItem('sessionToken');
 
       // Make the API request
-      const response = await axios.get(`${BACKEND_URL}/capsules`, {
+      const response = await axios.get('http://localhost:8000/capsules', {
         headers: {
           'Content-Type': 'application/json', // Set content type if needed
           sessionToken: sessionToken,

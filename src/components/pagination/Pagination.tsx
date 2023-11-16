@@ -35,7 +35,6 @@ const Pagination = ({
             page === currentPage ? 'font-extrabold bg-gray-400 text-dark' : ''
           }`}
         >
-          {/* Display the page number on the button */}
           {page}
         </Button>
       ))}
