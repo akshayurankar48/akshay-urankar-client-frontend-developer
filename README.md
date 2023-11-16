@@ -2,6 +2,8 @@
 
 This project is a React-based web application that allows users to explore SpaceX data. The application fetches and displays information about rockets and capsules from the SpaceX API, providing a user-friendly interface for seamless interaction.
 
+## Video url - https://drive.google.com/file/d/14btgZPs8MbcIPD9q5hvgevrbvAEAsRu-/view?usp=sharing
+
 ## Table of Contents
 
 - [Getting Started](#getting-started)
@@ -30,7 +32,7 @@ Before running the project, make sure you have the following installed:
 1. Clone the repository:
 
 ```bash
-git clone <https://github.com/evilieswithin/akshay-urankar-client-frontend-developer.git>
+git clone https://github.com/evilieswithin/akshay-urankar-client-frontend-developer.git
 ```
 
 2. Install dependencies:
